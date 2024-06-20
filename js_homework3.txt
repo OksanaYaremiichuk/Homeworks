@@ -1,0 +1,13 @@
+function pow(x,y) {
+    let result = x
+    if(y==0) {
+        result = 1
+    } else {
+        for (let i = 1; i < y; i++) {
+            result *= x
+        }
+    }
+    console.log(result)
+}
+
+const test = pow(2,3)
