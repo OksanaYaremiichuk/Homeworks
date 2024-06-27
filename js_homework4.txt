@@ -1,0 +1,32 @@
+function checkProbabilityTheory(count) {
+    if (Number.isInteger(count) === false) {
+        return 'Число має бути цілим';
+    }
+    if (count <= 0) {
+        return 'count має бути більше 0';
+    }
+    
+    let even = 0;
+    let odd = 0;
+    const min = 100;
+    const max = 1000;
+ 
+    for (let i = 1; i <= count; i++) {
+        let number = Math.floor(Math.random() * (max - min + 1) + min);
+        console.log('Згенероване число: ' + number);
+  
+        if (number % 2 === 0) {
+            even++;
+        } else {
+            odd++;
+        }
+    }
+    console.log('Кількість парних - ' + even + ' кількість непарних - ' + odd);
+ 
+    let evenPercent = 100 / (even + odd) * even;
+    let oddPercent = 100 - evenPercent;
+ 
+    return evenPercent + '% парних чисел, ' + oddPercent + '% непарних чисел';
+}
+
+console.log (checkProbabilityTheory(10));
