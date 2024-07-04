@@ -1,0 +1,18 @@
+let myPet = {
+    type: 'Cat',
+    name: 'Mice',
+    dateOfBirth: 'Unknown',
+    faveFood: 'Cheese',
+    getInfo: function() {
+        let info = '';
+        for (let key in this) {
+            if (key !== 'getInfo') {
+                info += key + ': ' + this[key] + '\n';
+            }
+        }
+
+        return info;
+    }
+};
+
+console.log(myPet.getInfo());
