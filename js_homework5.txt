@@ -1,3 +1,4 @@
+7.1
 let myPet = {
     type: 'Cat',
     name: 'Mice',
@@ -17,7 +18,7 @@ let myPet = {
 
 console.log(myPet.getInfo());
 
-
+7.2
 var services = {
     "стрижка": "60 грн",
     "гоління": "80 грн",
