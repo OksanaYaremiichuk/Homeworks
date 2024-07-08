@@ -1,0 +1,76 @@
+const company = {
+  name: 'Велика Компанія',
+  type:'Головна компанія',
+  platform: 'Платформа для продажу квитків',
+  sellsSolution: 'Рішення для продажу квитків',
+  clients: [
+    {
+      name: 'Клієнт 1',
+      type: 'subCompany',
+      uses: 'ПО для продажу квитків',
+      sells: 'Рішення для продажу квитків',
+      partners: [
+        {
+          name: 'Клієнт 1.1',
+          type: 'subSubCompany',
+          uses: 'Рішення для продажу квитків',
+          sells: 'Рішення для продажу квитків',
+        },
+        {
+          name: 'Клієнт 1.2',
+          type: 'subSubCompany',
+          uses: 'Рішення для продажу квитків',
+          sells: 'Рішення для продажу квитків',
+          partners: [
+            {
+              name: 'Клієнт 1.2.3',
+              type: 'subSubCompany',
+              uses: 'Рішення для продажу квитків',
+              sells: 'Рішення для продажу квитків',
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Клієнт 2',
+      type: 'subCompany',
+      uses: 'ПО для продажу квитків',
+      sells: 'Рішення для продажу квитків'
+    }
+  ]
+};
+
+
+function findValueByKey(companyName) {
+    let client = company.clients.find(client => client.name === companyName);
+
+    if (client) {
+        return client;
+    }
+
+    for (let i = 0; i < company.clients.length; i++) {
+        let partners = company.clients[i].partners;
+        
+        if (partners) {
+            client = partners.find(partner => partner.name === companyName);
+            if (client) {
+                return client;
+            }
+            
+            for (let j = 0; j < partners.length; j++) {
+                let innerPartners = partners[j].partners;
+                if (innerPartners) {
+                    client = innerPartners.find(partner => partner.name === companyName);
+                    if (client) {
+                        return client;
+                    }
+                }
+            }
+        }
+    }
+
+    return null;
+}
+
+console.log(findValueByKey('Клієнт 1.2.3')); 
